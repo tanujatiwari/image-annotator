@@ -16,7 +16,7 @@ export default function Landing() {
     setComments,
   } = useHook();
   return (
-    <div className='bg-gray-100 w-screen relative'>
+    <div className='bg-gray-100 h-screen w-screen relative'>
       <nav className='bg-white h-[72px] flex items-center p-10'>
         <p className='font-bold'>Folder</p>
       </nav>
