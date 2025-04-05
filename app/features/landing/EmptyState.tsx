@@ -1,3 +1,4 @@
+import { SvgEmptyBucket } from '@/app/sdk/assets/svgs';
 import Button from '@/app/sdk/components/button';
 import { ChangeEvent, useRef } from 'react';
 import { MdOutlineFileUpload } from 'react-icons/md';
@@ -19,7 +20,7 @@ const EmptyState = ({
         onChange={handleInputChange}
         accept={'.jpeg,.png'}
       />
-
+      <SvgEmptyBucket />
       <p>Drop images here</p>
       <p className='text-gray-400'>or use upload button to upload images</p>
       <Button
