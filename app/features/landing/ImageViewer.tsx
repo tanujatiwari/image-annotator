@@ -58,14 +58,16 @@ export default function ImageViewer({
       }
     >
       <div className='p-[20px] flex justify-center items-center h-[calc(100vh-76px)]'>
-        <Image
-          width={500}
-          alt=''
-          height={500}
-          src={image?.url}
-          className='w-[calc(100vw-200px)] h-[calc(100vh-200px)] object-cover rounded-4xl'
-          onClick={handleImageClick}
-        />
+        <div className='w-[calc(100vw-200px)] h-[calc(100vh-200px)] rounded-4xl flex items-center justify-center'>
+          <Image
+            width={500}
+            alt=''
+            height={500}
+            src={image?.url}
+            onClick={handleImageClick}
+            className='w-max h-full'
+          />
+        </div>
         {comments?.map((comment, index) => (
           <CommentMarker
             key={index}
