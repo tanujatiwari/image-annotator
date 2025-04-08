@@ -16,10 +16,7 @@ export default function Landing() {
     setComments,
   } = useHook();
   return (
-    <div className='bg-gray-100 h-screen w-screen relative'>
-      <nav className='bg-white h-[72px] flex items-center p-10'>
-        <p className='font-bold'>Folder</p>
-      </nav>
+    <main className='my-auto h-full'>
       {selectedImageOnModal?.isSelected ? (
         <ImageViewer
           close={() =>
@@ -30,27 +27,23 @@ export default function Landing() {
           setComments={setComments}
         />
       ) : null}
-      <main>
-        <section className='p-10'>
-          {images?.length ? (
-            <div className='grid grid-cols-5 gap-10'>
-              {images.map(({ image, imageId }) => {
-                const url = URL.createObjectURL(image);
-                return (
-                  <ImageCard
-                    key={imageId}
-                    name={image.name}
-                    url={url}
-                    onClick={() => handleImageCardClick(imageId)}
-                  />
-                );
-              })}
-            </div>
-          ) : (
-            <EmptyState handleInputChange={handleInputChange} />
-          )}
-        </section>
-      </main>
-    </div>
+      {images?.length ? (
+        <div className='grid lg:grid-cols-5 gap-10 sm:grid-cols-3 grid-cols-1 p-10'>
+          {images.map(({ image, imageId }) => {
+            const url = URL.createObjectURL(image);
+            return (
+              <ImageCard
+                key={imageId}
+                name={image.name}
+                url={url}
+                onClick={() => handleImageCardClick(imageId)}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <EmptyState handleInputChange={handleInputChange} />
+      )}
+    </main>
   );
 }

@@ -45,8 +45,6 @@ export default function ImageViewer({
     handleEditClose,
   } = useImageViewer(comments, setComments);
 
-  console.log({ comments });
-
   return (
     <Modal
       close={close}
@@ -57,15 +55,15 @@ export default function ImageViewer({
         />
       }
     >
-      <div className='p-[20px] flex justify-center items-center h-[calc(100vh-76px)]'>
-        <div className='w-[calc(100vw-200px)] h-[calc(100vh-200px)] rounded-4xl flex items-center justify-center'>
+      <div className='p-5 flex justify-center items-center h-[calc(100vh-var(--navbar-height))]'>
+        <div className='max-w-[calc(100vw-200px)] max-h-[calc(100vh-200px)] h-full w-full rounded-4xl flex items-center justify-center'>
           <Image
             width={500}
             alt=''
             height={500}
             src={image?.url}
             onClick={handleImageClick}
-            className='w-max h-full'
+            className='w-max h-max object-contain'
           />
         </div>
         {comments?.map((comment, index) => (

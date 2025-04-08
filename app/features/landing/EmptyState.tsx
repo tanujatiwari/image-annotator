@@ -10,7 +10,7 @@ const EmptyState = ({
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   return (
-    <div className='w-full h-[calc(100vh-72px)] flex items-center justify-center flex-col space-y-2 px-1'>
+    <div className='w-full h-full flex items-center justify-center flex-col space-y-2 px-1'>
       <input
         type='file'
         id='file-input'

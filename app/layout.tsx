@@ -25,9 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100 h-screen w-screen relative overflow-hidden`}
       >
-        {children}
+        <nav className='bg-white h-[var(--navbar-height)] flex items-center p-10'>
+          <p className='font-bold'>Folder</p>
+        </nav>
+        <div className='overflow-y-scroll h-[calc(100vh-var(--navbar-height))]'>{children}</div>
       </body>
     </html>
   );

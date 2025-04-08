@@ -22,7 +22,7 @@ export default function Modal({
       )}
       {...rest}
     >
-      <nav className='bg-black/50 h-[72px] flex justify-between items-center p-10'>
+      <nav className='bg-black/50 h-[var(--navbar-height)] flex justify-between items-center p-10'>
         {leftContent || <div />}
         <div>
           <RxCross2 color='#fff' size={25} onClick={close} className='cursor-pointer' />
