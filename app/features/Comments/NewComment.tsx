@@ -1,3 +1,4 @@
+'use client'
 import Divider from '@/app/sdk/components/divider';
 import { default as Input, InputProps } from '@/app/sdk/components/input';
 import clsx from 'clsx';
