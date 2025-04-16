@@ -4,7 +4,7 @@ import Popover from '@/app/sdk/components/popover';
 import { Comments, ImageComment } from '@/app/sdk/types';
 import clsx from 'clsx';
 import Image from 'next/image';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import CommentMarker from '../Comments/CommentMarker';
 import EditComment from '../Comments/EditComment';
 import NewComment from '../Comments/NewComment';
@@ -44,6 +44,37 @@ export default function ImageViewer({
     setMode,
     handleEditClose,
   } = useImageViewer(comments, setComments);
+
+  const [flip, setFlip] = useState(false);
+  const [coords, setCoords] = useState({ top: 0, left: 0 });
+
+  useEffect(() => {
+    if (!isOpen || !position) return;
+
+    const translate = position.translate ?? 0;
+    const anchorX = position.x + translate;
+    const anchorY = position.y + translate;
+
+    // wait for popover to render
+    requestAnimationFrame(() => {
+      const popoverWidth = popoverRef.current?.offsetWidth ?? 250;
+      const spaceRight = window.innerWidth - anchorX;
+
+      if (spaceRight < popoverWidth) {
+        setCoords({
+          top: anchorY,
+          left: anchorX - popoverWidth,
+        });
+        setFlip(true);
+      } else {
+        setCoords({
+          top: anchorY,
+          left: anchorX,
+        });
+        setFlip(false);
+      }
+    });
+  }, [position, isOpen]);
 
   return (
     <Modal
@@ -100,10 +131,10 @@ export default function ImageViewer({
           <Popover
             ref={popoverRef}
             style={{
-              top: (position?.y ?? 0) + (position?.translate ?? 0),
-              left: (position?.x ?? 0) + (position?.translate ?? 0),
+              top: coords.top,
+              left: coords.left,
             }}
-            className={clsx('h-max p-0')}
+            className={clsx('h-max p-0', flip && 'origin-right')}
           >
             {mode === 'view' ? (
               <ViewComment comment={hoveredComment} />

@@ -26,6 +26,8 @@ export default function useImageViewer(
     }
     setIsOpen(true);
     setPosition({ x: e.clientX, y: e.clientY });
+    setMode('new');
+    setHoveredComment(null);
   };
 
   const handleCreateComment = (imageId: string, input: string) => {
