@@ -63,7 +63,7 @@ export default function ImageViewer({
             height={500}
             src={image?.url}
             onClick={handleImageClick}
-            className='w-max max-h-screen h-full object-contain'
+            className='max-w-screen w-max max-h-screen h-full object-contain'
           />
         </div>
         {comments?.map((comment, index) => (
