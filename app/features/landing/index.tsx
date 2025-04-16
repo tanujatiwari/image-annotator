@@ -19,7 +19,7 @@ export default function Landing() {
   return (
     <>
       <nav className='bg-white h-[var(--navbar-height)] flex items-center justify-between p-10'>
-        <p className='font-bold'>Folder</p>
+        <p className='font-bold'>Image Annotator</p>
         {images.length ? (
           <UploadButton handleInputChange={handleInputChange} />
         ) : null}
